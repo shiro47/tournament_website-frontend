@@ -10,7 +10,9 @@ const Layout: React.FC<LayoutProps> = (props) => {
         <div className="vh-100">
             <Header />
             <div className='background-image vh-100'>
-            {props.children}
+                <div className='background-global vh-100'>
+                    {props.children}
+                </div>
             </div>
         </div>
     );
