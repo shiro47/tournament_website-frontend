@@ -6,26 +6,25 @@ import {
   Route
 } from 'react-router-dom';
 import Layout from './components/layout';
-import TournamentsCards from './components/tournamentsCards';
+import TournamentDetails from './pages/tournamentDetails';
+import LoginPage from './pages/login';
+import TournamentCreator from './pages/tournamentCreator';
+import HomePage from './pages/home';
+import Tournaments from './pages/tournaments';
 
 function App() {
-  const tournamentsData = [
-    { title: 'Tournament 1', date: '2023-08-16' },
-    { title: 'Tournament 2', date: '2023-08-17' },
-    { title: 'Tournament 3', date: '2023-08-16' },
-    { title: 'Tournament 4', date: '2023-08-17' },
-    { title: 'Tournament 5', date: '2023-08-16' },
-    { title: 'Tournament 6', date: '2023-08-17' },
-    { title: 'Tournament 7', date: '2023-08-16' },
-    { title: 'Tournament 8', date: '2023-08-17' },
-    { title: 'Tournament 9', date: '2023-08-16' },
-    { title: 'Tournament 10', date: '2023-08-17' },
-    // ...other tournaments
-  ];
   return (
     <Router>
       <Layout>
-        <TournamentsCards tournaments={tournamentsData}/>
+        <Routes>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/tournament" element={<TournamentDetails/>} caseSensitive={false}/>
+          <Route path="/tournament/create" element={<TournamentCreator/>}/>
+          <Route path="/tournaments" element={<Tournaments/>}/>
+          <Route path="/login" element={<LoginPage/>}/>
+        </Routes>
+        
+        
       </Layout>
     </Router>
   );

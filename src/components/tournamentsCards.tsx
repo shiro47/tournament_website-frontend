@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Row, Col, Pagination } from 'react-bootstrap';
+import { Card, Row, Col, Pagination, Button } from 'react-bootstrap';
 
 interface Tournament {
   title: string;
@@ -51,6 +51,7 @@ const TournamentsCards: React.FC<Props> = (props) => {
                 <Card.Text>{tournament.date}</Card.Text>
                 {/* ...other card content */}
               </Col>
+              <Button size='sm' href='/tournament'>View details</Button>
             </Row>
           </Card.Body>
         </Card>
