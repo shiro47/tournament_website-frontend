@@ -66,3 +66,13 @@ body {
   margin: 2vh;
   width: 95%
 }
+
+.team-card-col {
+  margin-bottom: 20px; 
+}
+
+.team-card {
+  background-color: #ffffff00; 
+  color: white; 
+  border: none; 
+}

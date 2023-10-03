@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-
+import { useAuth } from './AuthContext';
 
 function Header() {
+    const { isLoggedIn, logout } = useAuth();
     return (
         <Navbar sticky='top' bg="dark" data-bs-theme="dark" expand="lg">
             <Container>
@@ -19,16 +20,17 @@ function Header() {
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/tournaments">Tournaments</Nav.Link>
+                        {isLoggedIn ? (
                         <Nav.Link href="/tournament/create">Create</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
+                    ) : (
+                        <></>
+                    )}
                     </Nav>
-                    <Button href='/login'>Login</Button>
+                    {isLoggedIn ? (
+                        <Button onClick={logout}>Logout</Button>
+                    ) : (
+                        <Button href='/login'>Login</Button>
+                    )}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

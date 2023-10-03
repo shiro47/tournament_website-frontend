@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Pagination, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
+interface Team {
+  id: number;
+  name: string;
+  player1: number;
+  player2: number;
+  player3: number;
+}
 
 interface Tournament {
+  id : number,
   title: string;
   date: string;
+  description: string;
+  rewards: string;
+  rules: string;
+  teams: Team[];
+  
   // ...other properties
 }
 
@@ -14,6 +29,8 @@ interface Props {
 const TournamentsCards: React.FC<Props> = (props) => {
   const { tournaments } = props;
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
+
 
   // Calculate itemsPerPage based on screen size
   let itemsPerPage = 8; // Default number of cards per page
@@ -51,7 +68,8 @@ const TournamentsCards: React.FC<Props> = (props) => {
                 <Card.Text>{tournament.date}</Card.Text>
                 {/* ...other card content */}
               </Col>
-              <Button size='sm' href='/tournament'>View details</Button>
+              <Button size='sm' onClick={() => navigate(`/tournament/${tournament.title}`, {
+      state: { tournamentData: tournament }})}>View details</Button>
             </Row>
           </Card.Body>
         </Card>

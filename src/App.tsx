@@ -11,21 +11,27 @@ import LoginPage from './pages/login';
 import TournamentCreator from './pages/tournamentCreator';
 import HomePage from './pages/home';
 import Tournaments from './pages/tournaments';
+import { AuthProvider } from './components/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+
 
 function App() {
   return (
     <Router>
+      <AuthProvider>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage/>}/>
-          <Route path="/tournament" element={<TournamentDetails/>} caseSensitive={false}/>
-          <Route path="/tournament/create" element={<TournamentCreator/>}/>
+          <Route path="/tournament/:id" element={<TournamentDetails/>} caseSensitive={false}/>
+          <Route path="/tournament/create" element={<ProtectedRoute>
+            <TournamentCreator/>
+            </ProtectedRoute>
+          }/>
           <Route path="/tournaments" element={<Tournaments/>}/>
           <Route path="/login" element={<LoginPage/>}/>
         </Routes>
-        
-        
       </Layout>
+      </AuthProvider>
     </Router>
   );
 }

@@ -2,12 +2,13 @@ import React from "react";
 import { Nav, Tab } from "react-bootstrap";
 import GeneralInfo from "../components/tournamentDetails/generalInfo";
 import TeamsInfo from "../components/tournamentDetails/teamsInfo";
+import { useLocation } from "react-router-dom";
 
-interface props {
-    
-}
+interface props {}
 
 const TournamentDetails: React.FC<props> = (props) => {
+  const location = useLocation();
+  const tournamentData = location.state.tournamentData;
     return(
       <div className="tDetails">
         <Tab.Container id="tabs-example" defaultActiveKey="general" >
@@ -24,10 +25,10 @@ const TournamentDetails: React.FC<props> = (props) => {
       <Tab.Content >
         <Tab.Pane eventKey="general">
           <label>data</label>
-          <GeneralInfo/>
+          <GeneralInfo details={tournamentData}/>
         </Tab.Pane>
         <Tab.Pane eventKey="teams">
-          <TeamsInfo/>
+          <TeamsInfo teams={tournamentData.teams}/>
         </Tab.Pane>
       </Tab.Content>
     </Tab.Container>
