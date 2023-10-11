@@ -9,12 +9,20 @@ const TournamentCreator: React.FC<Props> = (props) => {
   const [description, setDescription] = useState("");
   const [rewards, setRewards] = useState("");
   const [rules, setRules] = useState("");
+  const [date, setDate] = useState("")
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    const starting_at = date;
+    console.log(JSON.stringify({
+      title,
+      description,
+      rewards,
+      rules,
+      starting_at,
+    }))
     try {
       const response = await fetch("http://localhost:8000/api/tournaments/", {
         method: "POST",
@@ -27,6 +35,7 @@ const TournamentCreator: React.FC<Props> = (props) => {
           description,
           rewards,
           rules,
+          date,
         }),
       });
 
@@ -91,6 +100,16 @@ const TournamentCreator: React.FC<Props> = (props) => {
             placeholder="Enter rules"
           />
         </Form.Group>
+        <Form.Group className="mb-3" controlId="starting_at">
+          <Form.Label>Starting at</Form.Label>
+              <Form.Control
+                type="datetime-local"
+                name="date"
+                placeholder="Date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+          </Form.Group>
         {error && <div className="text-danger">{error}</div>}
         <Button variant="primary" type="submit">
           Submit

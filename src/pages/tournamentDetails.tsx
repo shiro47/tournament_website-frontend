@@ -24,7 +24,6 @@ const TournamentDetails: React.FC<props> = (props) => {
       </div>
       <Tab.Content >
         <Tab.Pane eventKey="general">
-          <label>data</label>
           <GeneralInfo details={tournamentData}/>
         </Tab.Pane>
         <Tab.Pane eventKey="teams">

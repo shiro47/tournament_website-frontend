@@ -17,6 +17,8 @@ interface Tournament {
   description: string;
   rewards: string;
   rules: string;
+  created_at: string;
+  starting_at: string;
   teams: Team[];
   
   // ...other properties
@@ -65,7 +67,7 @@ const TournamentsCards: React.FC<Props> = (props) => {
               </Col>
               <Col xs={12} md={8}> {/* Adjust the width of the content column */}
                 <Card.Title>{tournament.title}</Card.Title>
-                <Card.Text>{tournament.date}</Card.Text>
+                <Card.Text>{new Date(tournament.starting_at).toLocaleString()}</Card.Text>
                 {/* ...other card content */}
               </Col>
               <Button size='sm' onClick={() => navigate(`/tournament/${tournament.title}`, {
