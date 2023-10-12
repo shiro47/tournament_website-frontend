@@ -13,6 +13,7 @@ import HomePage from './pages/home';
 import Tournaments from './pages/tournaments';
 import { AuthProvider } from './components/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import MyTournaments from './pages/myTournaments';
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
           <Route path="/tournament/:id" element={<TournamentDetails/>} caseSensitive={false}/>
           <Route path="/tournament/create" element={<ProtectedRoute>
             <TournamentCreator/>
+            </ProtectedRoute>
+          }/>
+          <Route path="/mytournaments" element={<ProtectedRoute>
+            <MyTournaments/>
             </ProtectedRoute>
           }/>
           <Route path="/tournaments" element={<Tournaments/>}/>

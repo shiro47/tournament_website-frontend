@@ -11,9 +11,9 @@ const TournamentDetails: React.FC<props> = (props) => {
   const tournamentData = location.state.tournamentData;
     return(
       <div className="tDetails">
-        <Tab.Container id="tabs-example" defaultActiveKey="general" >
+        <Tab.Container  id="tabs-example" defaultActiveKey="general" >
       <div>
-        <Nav variant="tabs">
+        <Nav fill variant="tabs">
           <Nav.Item>
             <Nav.Link eventKey="general">General</Nav.Link>
           </Nav.Item>

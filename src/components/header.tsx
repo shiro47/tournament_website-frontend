@@ -25,6 +25,11 @@ function Header() {
                     ) : (
                         <></>
                     )}
+                    {isLoggedIn ? (
+                        <Nav.Link href="/mytournaments">My tournaments</Nav.Link>
+                    ) : (
+                        <></>
+                    )}
                     </Nav>
                     {isLoggedIn ? (
                         <Button onClick={logout}>Logout</Button>

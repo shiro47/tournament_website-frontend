@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../components/AuthContext";
 
 interface Props {}
 
@@ -12,17 +13,11 @@ const TournamentCreator: React.FC<Props> = (props) => {
   const [date, setDate] = useState("")
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { getNewAccessToken } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const starting_at = date;
-    console.log(JSON.stringify({
-      title,
-      description,
-      rewards,
-      rules,
-      starting_at,
-    }))
     try {
       const response = await fetch("http://localhost:8000/api/tournaments/", {
         method: "POST",
@@ -35,17 +30,17 @@ const TournamentCreator: React.FC<Props> = (props) => {
           description,
           rewards,
           rules,
-          date,
+          starting_at,
         }),
       });
 
       if (response.ok) {
-        // Tournament created successfully
-        // You can handle success as needed, e.g., show a success message
         console.log("Tournament created successfully");
         navigate("/tournaments");
-      } else {
-        // Handle error responses from the API
+      } else if (response.status === 401) {
+        await getNewAccessToken();
+        setError("Please try again. If still not working, try relogin.")
+      }else {
         setError("Failed to create tournament. Please try again.");
       }
     } catch (error) {
