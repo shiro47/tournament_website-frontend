@@ -77,7 +77,7 @@ const SignupModal: React.FC<Props> = (props) => {
 
             {players.map((player, index) => (
               <div key={index}>
-                <hr style={{borderWidth: "2px"}}/>
+                <hr style={{ borderWidth: "2px" }} />
                 <Form.Group className="mb-3" controlId={`${player.refName}Name`}>
                   <Form.Label>{player.label} Name</Form.Label>
                   <Form.Control type="text" placeholder={`${player.label} name`} required />
@@ -90,12 +90,12 @@ const SignupModal: React.FC<Props> = (props) => {
                   <Form.Group as={Col} className="mb-3" controlId={`${player.refName}DiscordId`}>
                     <Form.Label>{player.label} Discord Id</Form.Label>
                     <Form.Control type="number" placeholder={`Discord id`} required />
-                    <Form.Text 
-                    className='text-muted' 
-                    target='_blank'
-                    as={'a'} 
-                    href='https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-'>
-                    How to get discord id
+                    <Form.Text
+                      className='text-muted'
+                      target='_blank'
+                      as={'a'}
+                      href='https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-'>
+                      How to get discord id
                     </Form.Text>
                   </Form.Group>
                 </Row>

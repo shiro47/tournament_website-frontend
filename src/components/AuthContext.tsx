@@ -37,19 +37,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const getNewAccessToken = async () => {
-    if (!refreshToken) {
+    if (!localStorage.getItem("refreshToken")) {
+      setIsLoggedIn(false)
       return;
     }
-  
+
     try {
       const response = await fetch("http://localhost:8000/auth/login/refresh/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ refresh: refreshToken }),
+        body: JSON.stringify({ refresh: localStorage.getItem("refreshToken") }),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
 
@@ -82,7 +83,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ accessToken, refreshToken, setAccessToken, setRefreshToken, isLoggedIn, setIsLoggedIn, logout, getNewAccessToken}}>
+    <AuthContext.Provider value={{ accessToken, refreshToken, setAccessToken, setRefreshToken, isLoggedIn, setIsLoggedIn, logout, getNewAccessToken }}>
       {children}
     </AuthContext.Provider>
   );

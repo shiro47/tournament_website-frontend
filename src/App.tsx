@@ -14,6 +14,8 @@ import Tournaments from './pages/tournaments';
 import { AuthProvider } from './components/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import MyTournaments from './pages/myTournaments';
+import TournamentEditor from './pages/tournamentEditor';
+import TournamentTeams from './pages/tournamentTeams';
 
 
 function App() {
@@ -24,6 +26,12 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/tournament/:id" element={<TournamentDetails/>} caseSensitive={false}/>
+          <Route path="/tournament/edit/:id" element={<ProtectedRoute>
+            <TournamentEditor/>
+            </ProtectedRoute>}/>
+          <Route path="/tournament/teams/:id" element={<ProtectedRoute>
+            <TournamentTeams/>
+            </ProtectedRoute>}/>
           <Route path="/tournament/create" element={<ProtectedRoute>
             <TournamentCreator/>
             </ProtectedRoute>
@@ -42,35 +50,3 @@ function App() {
 }
 
 export default App;
-
-
-// return (
-//   <Router>
-//     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-//     <div className="gradient-custom" >
-//     <Layout>
-//       <Routes>
-//         <Route path="/" element={<HomePage/>} exact/>
-//         <Route path="/login" element={<Login/>} exact/>
-//         <Route path="/streamers" element={
-//           <ProtectedRoute>
-//         <Streamers/>
-//         </ProtectedRoute>
-//         } exact/>
-//         <Route path="/dashboard" element={
-//           <ProtectedRoute>
-//         <Dashboard/>
-//         </ProtectedRoute>
-//         } exact/>
-//         <Route path="/apexDB" element={
-//           <ProtectedRoute>
-//         <ApexDB/>
-//         </ProtectedRoute>
-//         } exact/>
-//       </Routes>
-//     </Layout>
-//     </div>
-//     </AuthContext.Provider>
-//   </Router>
-// );
-// }

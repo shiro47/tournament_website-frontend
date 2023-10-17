@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import TournamentsCards from "../components/tournamentsCards";
+import TournamentsCards from "../components/tournamentCards";
 import { Stack, Button, Form } from "react-bootstrap";
 
-interface props {}
+interface props { }
 
 const Tournaments: React.FC<props> = (props) => {
     const [tournamentsData, setTournamentsData] = useState([]);
@@ -29,22 +29,23 @@ const Tournaments: React.FC<props> = (props) => {
     };
 
     useEffect(() => {
-            fetchData();
-        }, []);
-    return(
+        fetchData();
+    }, []);
+    return (
         <>
-        <h2 className="text-center">Tournaments</h2>
-        <div className="tournaments-box">
-            <Stack direction="horizontal" gap={2}>
-                <Form.Control className="me-auto" placeholder="Search by tournament title..." ref={searchInputRef}/>
-                <Button variant="secondary">Search</Button>
-                <div className="vr" />
-                <Button variant="outline-danger" onClick={handleReset}>Reset</Button>
-            </Stack>
-        <TournamentsCards tournaments={tournamentsData}/>
-        </div>
+            <h2 className="text-center">Tournaments</h2>
+            <div className="tournaments-box">
+                <Stack direction="horizontal" gap={2}>
+                    <Form.Control className="me-auto" placeholder="Search by tournament title..." ref={searchInputRef} />
+                    <Button variant="secondary">Search</Button>
+                    <div className="vr" />
+                    <Button variant="outline-danger" onClick={handleReset}>Reset</Button>
+                </Stack>
+                <hr />
+                <TournamentsCards tournaments={tournamentsData} />
+            </div>
         </>
     );
-    }
+}
 
 export default Tournaments;

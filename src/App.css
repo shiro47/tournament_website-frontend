@@ -7,7 +7,8 @@ body {
   position: relative;
   color: white; 
   -webkit-backdrop-filter: brightness(35%);
-  backdrop-filter: brightness(35%);
+  backdrop-filter: brightness(35%)
+  blur(5px);
 }
 
 .background-image {
@@ -54,6 +55,7 @@ body {
   margin-left: 5%;
   margin-right:5%;
   width: 90%;
+  padding: 20px;
 }
 
 .tDetails {

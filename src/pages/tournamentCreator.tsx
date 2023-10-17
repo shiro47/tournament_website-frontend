@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
 
-interface Props {}
+interface Props { }
 
 const TournamentCreator: React.FC<Props> = (props) => {
   const [title, setTitle] = useState("");
@@ -40,7 +40,7 @@ const TournamentCreator: React.FC<Props> = (props) => {
       } else if (response.status === 401) {
         await getNewAccessToken();
         setError("Please try again. If still not working, try relogin.")
-      }else {
+      } else {
         setError("Failed to create tournament. Please try again.");
       }
     } catch (error) {
@@ -51,7 +51,7 @@ const TournamentCreator: React.FC<Props> = (props) => {
   return (
     <div className="tCreator">
       <h2 className="text-center">Tournament Creator</h2>
-      <Form style={{ margin: "2vh" }} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="title">
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -97,15 +97,17 @@ const TournamentCreator: React.FC<Props> = (props) => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="starting_at">
           <Form.Label>Starting at</Form.Label>
-              <Form.Control
-                type="datetime-local"
-                name="date"
-                placeholder="Date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
-          </Form.Group>
-        {error && <div className="text-danger">{error}</div>}
+          <Form.Control
+            type="datetime-local"
+            name="date"
+            placeholder="Date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </Form.Group>
+        {error && <Alert variant="danger">
+          {error}
+        </Alert>}
         <Button variant="primary" type="submit">
           Submit
         </Button>

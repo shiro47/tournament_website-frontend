@@ -1,10 +1,10 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { AuthContext } from "../components/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
 
-interface props {}
+interface props { }
 
 
 const LoginPage: React.FC<props> = (props) => {
@@ -33,33 +33,33 @@ const LoginPage: React.FC<props> = (props) => {
         localStorage.setItem("refreshToken", data.refresh)
         setIsLoggedIn(true);
 
-        navigate("/"); 
-      } else if (response.status ===401) {
+        navigate("/");
+      } else if (response.status === 401) {
         setError("Invalid credentials. Please try again.");
       }
     } catch (error) {
       setError("An error occurred. Please try again later.");
     }
   };
-    return(
-        <div className="login-form">
-        <Form style={{margin: "2vh"}} onSubmit={handleSubmit}>
+  return (
+    <div className="login-form">
+      <Form style={{ margin: "2vh" }} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control required value={username} placeholder="Enter username" onChange={(e) => setUsername(e.target.value)} />
         </Form.Group>
-  
+
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control required value={password} type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+          <Form.Control required value={password} type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
         {error && <p className="text-danger">{error}</p>}
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
-      </div>
-    )
+    </div>
+  )
 }
 
 export default LoginPage;
