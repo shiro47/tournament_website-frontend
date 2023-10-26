@@ -31,7 +31,7 @@ const TeamCards: React.FC<props> = (props) => {
 
     const handleReject = async (teamId: number) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/teams/${teamId}`, {
+            const response = await fetch(`/api/teams/${teamId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const TeamCards: React.FC<props> = (props) => {
 
     const handleAccept = async (teamId: number) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/tournaments/accept_team/${teamId}`, {
+            const response = await fetch(`/api/tournaments/accept_team/${teamId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { AuthContext } from "../components/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
 
@@ -19,7 +18,7 @@ const LoginPage: React.FC<props> = (props) => {
 
     try {
       // Simulate a successful login and receive tokens
-      const response = await fetch("http://localhost:8000/auth/login/", {
+      const response = await fetch("/auth/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +31,6 @@ const LoginPage: React.FC<props> = (props) => {
         localStorage.setItem("accessToken", data.access)
         localStorage.setItem("refreshToken", data.refresh)
         setIsLoggedIn(true);
-
         navigate("/");
       } else if (response.status === 401) {
         setError("Invalid credentials. Please try again.");

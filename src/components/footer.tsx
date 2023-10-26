@@ -1,15 +1,18 @@
 import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
-interface props { }
-
-
-const Footer: React.FC<props> = (props) => {
-
+const Footer: React.FC = () => {
   return (
-    <footer className="text-center py-4 bg-dark text-light">
-      &copy; {new Date().getFullYear()} Tournament Website
+    <footer className="footer bg-dark text-light">
+      <Container fluid>
+        <Row className="py-4">
+          <Col className="text-center">
+            &copy; {new Date().getFullYear()} Tournament Website
+          </Col>
+        </Row>
+      </Container>
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

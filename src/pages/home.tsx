@@ -1,9 +1,8 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
 
-interface props { }
 
-const HomePage: React.FC<props> = (props) => {
+const HomePage: React.FC = () => {
 
   return (
     <>

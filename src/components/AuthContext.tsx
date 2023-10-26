@@ -43,7 +43,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/auth/login/refresh/", {
+      const response = await fetch("/auth/login/refresh/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

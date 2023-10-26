@@ -39,7 +39,7 @@ const TournamentsCards: React.FC<Props> = (props) => {
 
   const handleDelete = async (tournamentId: number) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/tournaments/${tournamentId}`, {
+      const response = await fetch(`/api/tournaments/${tournamentId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

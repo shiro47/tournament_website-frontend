@@ -7,12 +7,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
     return (
-        <div className="vh-100 d-flex flex-column">
+        <div className="d-flex flex-column">
             <Header />
-            <div className='background-image flex-grow-1'>
-                <div className='background-global vh-100'>
-                    {props.children}
-                </div>
+            <div className='background-image flex-grow-1' />
+            <div className='background-global'>
+                {props.children}
             </div>
             <Footer />
         </div>

@@ -14,9 +14,10 @@ const Tournaments: React.FC<props> = (props) => {
         fetchData();
     };
 
-    const fetchData = async () => {
+    const fetchData = async (title?: string) => {
         try {
-            const response = await fetch("http://localhost:8000/api/tournaments");
+            const url = title ? `/api/tournaments?title=${title}` : "/api/tournaments";
+            const response = await fetch(url);
             if (response.ok) {
                 const data = await response.json();
                 setTournamentsData(data);
@@ -25,6 +26,13 @@ const Tournaments: React.FC<props> = (props) => {
             }
         } catch (error) {
             console.error("Error while fetching data:", error);
+        }
+    };
+
+    const handleSearch = () => {
+        const searchValue = searchInputRef.current?.value;
+        if (searchValue) {
+            fetchData(searchValue);
         }
     };
 
@@ -37,7 +45,7 @@ const Tournaments: React.FC<props> = (props) => {
             <div className="tournaments-box">
                 <Stack direction="horizontal" gap={2}>
                     <Form.Control className="me-auto" placeholder="Search by tournament title..." ref={searchInputRef} />
-                    <Button variant="secondary">Search</Button>
+                    <Button variant="secondary" onClick={handleSearch}>Search</Button>
                     <div className="vr" />
                     <Button variant="outline-danger" onClick={handleReset}>Reset</Button>
                 </Stack>

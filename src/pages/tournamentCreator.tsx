@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
+import CustomEditor from "../components/RichEditor";
 
 interface Props { }
 
@@ -15,11 +16,12 @@ const TournamentCreator: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const { getNewAccessToken } = useAuth();
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const starting_at = date;
     try {
-      const response = await fetch("http://localhost:8000/api/tournaments/", {
+      const response = await fetch("/api/tournaments/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,37 +64,27 @@ const TournamentCreator: React.FC<Props> = (props) => {
             placeholder="Enter tournament title"
           />
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="tournamentDescription">
           <Form.Label>Description</Form.Label>
-          <Form.Control
-            required
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            as="textarea"
-            placeholder="Enter tournament description"
+          <CustomEditor
+            onEditorChange={(content) => setDescription(content)}
+            isRequired={true}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="rewards">
           <Form.Label>Rewards</Form.Label>
-          <Form.Control
-            required
-            value={rewards}
-            onChange={(e) => setRewards(e.target.value)}
-            as="textarea"
-            placeholder="Enter rewards"
+          <CustomEditor
+            onEditorChange={(content) => setRewards(content)}
+            isRequired={true}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="rules">
           <Form.Label>Rules</Form.Label>
-          <Form.Control
-            required
-            value={rules}
-            onChange={(e) => setRules(e.target.value)}
-            as="textarea"
-            placeholder="Enter rules"
+          <CustomEditor
+            onEditorChange={(content) => setRules(content)}
+            isRequired={true}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="starting_at">

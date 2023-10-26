@@ -37,7 +37,7 @@ const SignupModal: React.FC<Props> = (props) => {
     });
     console.log(formData)
     try {
-      const response = await fetch(`http://localhost:8000/api/tournaments/${tournamentID}/add_team`, {
+      const response = await fetch(`/api/tournaments/${tournamentID}/add_team`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
