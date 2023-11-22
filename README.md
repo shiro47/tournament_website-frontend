@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+# Apex Legends Tournaments Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the frontend repository for the Apex Legends Tournaments website! This React.js project serves as the user interface for interacting with the tournaments organized through the [corresponding backend](https://github.com/shiro47/tournament_website_backend).
 
-## Available Scripts
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [License](#license)
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+This project provides a user-friendly interface for participants, organizers, and viewers to engage with Apex Legends tournaments. Leveraging React.js allows for an interactive and dynamic experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Tournament Exploration:** View a list of ongoing and upcoming tournaments.
+- **Team Registration:** Register teams for participation in tournaments.
+- **User Authentication:** Secure login for tournaments admins.
+- **Responsive Design:** Ensures a seamless experience on various devices.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+Make sure you have the following installed:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js
+- npm (Node Package Manager)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/shiro47/tournament_website-frontend.git
+   ```
+2. Navigate to the project directory:
+    ```bash
+   cd tournament_website-frontend
+   ```
+3. Install dependencies using npm:
+    ```bash
+   npm install
+   ```
 
-### `npm run eject`
+### Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Start the development server:
+    ```bash
+    npm start
+    ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application will be accessible at http://localhost:3000/. Explore the frontend to interact with the tournaments and teams.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Screenshots
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Client 
 
-## Learn More
+- Home Page
+![Home Page](screenshots/tournaments-home.png)
+- Tournaments list
+![Tournaments list](screenshots/tournaments-list.png)
+- Tournament Details
+![Tournament Details](screenshots/tournament-details.png)
+- Tournament Teams
+![Tournament Teams](screenshots/tournament-teams.png)
+- Tournament Register
+![Tournament Register](screenshots/tournament-register.png)
+- Login
+![Login](screenshots/login.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Admin
+- My Tournaments
+![My Tournaments](screenshots/my-tournaments.png)
+- Tournament Creator
+![Tournament Creator](screenshots/tournament-creator.png)
+- Accept Teams
+![Accept Teams](screenshots/teams-checkin.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
+This project is licensed under the MIT License. Feel free to use, modify, and distribute it as needed.
+
+
+#### Note
+- This project was built to improve React skills.

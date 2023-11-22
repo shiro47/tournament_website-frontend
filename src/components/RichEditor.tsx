@@ -42,9 +42,10 @@ const CustomEditor: React.FC<CustomEditorProps> = ({ onEditorChange, editorValue
   };
 
   return (
-    <div className="container">
-      <div className='rich-editor'>
+    <div className="container w-100">
+      <div className='rich-editor w-100'>
         <Editor
+          editorClassName='w-100'
           placeholder='Write here'
           toolbarStyle={{ color: "black" }}
           editorState={editorState}
